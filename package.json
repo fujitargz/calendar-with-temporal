@@ -20,13 +20,50 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "fmt": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "fix": "yarn lint && yarn fmt",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "plugin:import/recommended",
+      "plugin:import/typescript",
+      "prettier"
+    ],
+    "plugins": [
+      "unused-imports"
+    ],
+    "rules": {
+      "import/no-default-export": "warn",
+      "import/no-duplicates": "warn",
+      "import/order": [
+        "warn",
+        {
+          "alphabetize": {
+            "order": "asc"
+          },
+          "newlines-between": "always"
+        }
+      ],
+      "unused-imports/no-unused-imports-ts": "warn"
+    },
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true
+        }
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -38,6 +75,24 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^12.4.2",
+    "prettier": "^2.6.2"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
+    ],
+    "src/**/*.{json,css,scss}": [
+      "prettier --write"
     ]
   }
 }
