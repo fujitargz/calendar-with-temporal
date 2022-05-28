@@ -2,6 +2,9 @@
   "name": "calendar-with-temporal",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "Not allowed. Please use Yarn instead."
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -94,5 +97,9 @@
     "src/**/*.{json,css,scss}": [
       "prettier --write"
     ]
+  },
+  "volta": {
+    "node": "16.15.0",
+    "yarn": "1.22.18"
   }
 }
