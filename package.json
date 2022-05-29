@@ -25,9 +25,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:es": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:style": "stylelint --fix 'src/**/*.{css,scss}'",
     "fmt": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "fix": "yarn lint && yarn fmt",
+    "fix": "yarn fmt && yarn lint:es && yarn lint:style",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -69,6 +70,12 @@
       }
     }
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier-scss"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -88,15 +95,22 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.0",
     "lint-staged": "^12.4.2",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.5",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^4.0.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix --max-warnings=0",
       "prettier --write"
     ],
-    "src/**/*.{json,css,scss}": [
+    "src/**/*.json": [
       "prettier --write"
+    ],
+    "src/**/*.{css,scss}": [
+      "prettier --write",
+      "stylelint --fix --max-warnings 0"
     ]
   },
   "volta": {

@@ -5,8 +5,12 @@
   "editor.formatOnType": true,
   "editor.codeActionsOnSave": [
     "source.fixAll.eslint",
+    "source.fixAll.stylelint",
     "source.addMissingImports"
   ],
   "css.lint.unknownAtRules": "ignore",
-  "scss.lint.unknownAtRules": "ignore"
+  "css.validate": false,
+  "scss.lint.unknownAtRules": "ignore",
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"]
 }
