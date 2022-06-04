@@ -1,0 +1,6 @@
+@use "variables";
+
+.day-cell {
+  text-align: center;
+  border: variables.$border-width solid variables.$border-color;
+}

@@ -86,7 +86,8 @@
   "stylelint": {
     "extends": [
       "stylelint-config-standard-scss",
-      "stylelint-config-prettier-scss"
+      "stylelint-config-prettier-scss",
+      "stylelint-config-recess-order"
     ]
   },
   "browserslist": {
@@ -123,6 +124,7 @@
     "prop-types": "^15.8.1",
     "stylelint": "^14.8.5",
     "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^4.0.0",
     "webpack": "^5.72.1"
   },
