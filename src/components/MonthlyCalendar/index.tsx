@@ -1,6 +1,9 @@
 import { DayCell } from "./DayCell";
 import styles from "./index.module.scss";
 
+/**
+ * MonthlyCalendar は一か月分の日付を表示するカレンダーです。
+ */
 export const MonthlyCalendar = () => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const daysPerWeek = 7;
