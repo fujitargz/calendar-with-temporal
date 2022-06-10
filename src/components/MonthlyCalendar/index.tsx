@@ -1,6 +1,8 @@
 import { DayCell } from "./DayCell";
 import styles from "./index.module.scss";
 
+import { HeaderCell } from "components/HeaderCell";
+
 /**
  * MonthlyCalendar は一か月分の日付を表示するカレンダーです。
  */
@@ -21,7 +23,7 @@ export const MonthlyCalendar = () => {
       <thead>
         <tr>
           {daysOfWeek.map((dayOfWeek) => (
-            <DayCell key={dayOfWeek}>{dayOfWeek}</DayCell>
+            <HeaderCell key={dayOfWeek}>{dayOfWeek}</HeaderCell>
           ))}
         </tr>
       </thead>
