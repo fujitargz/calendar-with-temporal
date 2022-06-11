@@ -2,21 +2,14 @@ import { DayCell } from "./DayCell";
 import styles from "./index.module.scss";
 
 import { HeaderCell } from "components/HeaderCell";
+import { useMonth } from "hooks/useMonth";
 
 /**
  * MonthlyCalendar は一か月分の日付を表示するカレンダーです。
  */
 export const MonthlyCalendar = () => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const daysPerWeek = 7;
-  const weeksPerMonth = 5;
-  const calendarDays = [...Array(weeksPerMonth)]
-    .map((_, index) => index)
-    .map((numOfWeek) =>
-      [...Array(daysPerWeek)].map(
-        (_, index) => daysPerWeek * numOfWeek + index + 1
-      )
-    );
+  const calendar = useMonth();
 
   return (
     <table className={styles.table}>
@@ -28,7 +21,7 @@ export const MonthlyCalendar = () => {
         </tr>
       </thead>
       <tbody>
-        {calendarDays.map((week, index) => (
+        {calendar.map((week, index) => (
           <tr key={"w" + index.toString()}>
             {week.map((day) => (
               <DayCell key={"d" + day.toString()}>{day}</DayCell>
