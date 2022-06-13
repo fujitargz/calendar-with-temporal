@@ -2,14 +2,34 @@ import { DayCell } from "./DayCell";
 import styles from "./index.module.scss";
 
 import { HeaderCell } from "components/HeaderCell";
-import { useMonth } from "hooks/useMonth";
+import { useDaysOfMonth } from "hooks/useDaysOfMonth";
+import { useYearMonth } from "hooks/useYearMonth";
+
+export interface MonthlyCalendarProps {
+  /**
+   * 表示する年の初期値
+   * デフォルト値は今年
+   * @default Temporal.Now.plainDate('japanese').year
+   */
+  initialYear?: number;
+  /**
+   * 表示する月の初期値
+   * デフォルト値は今月
+   * @default Temporal.Now.plainDate('japanese').month
+   */
+  initialMonth?: number;
+}
 
 /**
  * MonthlyCalendar は一か月分の日付を表示するカレンダーです。
  */
-export const MonthlyCalendar = () => {
+export const MonthlyCalendar = ({
+  initialYear,
+  initialMonth,
+}: MonthlyCalendarProps) => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const calendar = useMonth();
+  const [yearMonth] = useYearMonth(initialYear, initialMonth);
+  const calendar = useDaysOfMonth(yearMonth);
 
   return (
     <table className={styles.table}>
