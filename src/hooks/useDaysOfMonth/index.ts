@@ -1,6 +1,7 @@
 import { Temporal } from "@js-temporal/polyfill";
 
 import { LOCALE } from "constants/config";
+import { range } from "utils/range";
 
 export interface useDaysOfMonthProps {
   year: number;
@@ -33,14 +34,11 @@ export const useDaysOfMonth = ({ year, month }: useDaysOfMonthProps) => {
     firstDayOfCalendar.until(lastDayOfCalendar).total("day") + 1;
   const weeksInCalendar = daysInCalendar / daysInWeek;
 
-  const daysOfMonth = [...Array(weeksInCalendar)]
-    .map((_, index) => index)
-    .map((week) =>
-      [...Array(daysInWeek)].map(
-        (_, day) =>
-          firstDayOfCalendar.add({ days: daysInWeek * week + day }).day
-      )
-    );
+  const daysOfMonth = range(0, weeksInCalendar).map((week) =>
+    range(0, daysInWeek).map(
+      (day) => firstDayOfCalendar.add({ days: daysInWeek * week + day }).day
+    )
+  );
 
   return daysOfMonth;
 };
