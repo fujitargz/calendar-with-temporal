@@ -1,35 +1,31 @@
-import { DayCell } from "./DayCell";
+import { Temporal } from "@js-temporal/polyfill";
+
 import styles from "./index.module.scss";
 
-import { HeaderCell } from "components/HeaderCell";
+import { DayCell } from "components/MonthlyCalendar/DayCell";
+import { HeaderCell } from "components/shared/HeaderCell";
 import { useDaysOfMonth } from "hooks/useDaysOfMonth";
-import { useYearMonth } from "hooks/useYearMonth";
 
-export interface MonthlyCalendarProps {
+export interface MonthlyCalendarViewProps {
   /**
    * 表示する年の初期値
-   * デフォルト値は今年
-   * @default Temporal.Now.plainDate('japanese').year
    */
-  initialYear?: number;
+  year?: number;
   /**
    * 表示する月の初期値
-   * デフォルト値は今月
-   * @default Temporal.Now.plainDate('japanese').month
    */
-  initialMonth?: number;
+  month?: number;
 }
 
 /**
- * MonthlyCalendar は一か月分の日付を表示するカレンダーです。
+ * MonthlyCalendarView は一か月分の日付を表示するカレンダーです。
  */
-export const MonthlyCalendar = ({
-  initialYear,
-  initialMonth,
-}: MonthlyCalendarProps) => {
+export const MonthlyCalendarView = ({
+  year = Temporal.Now.plainDate("japanese").year,
+  month = Temporal.Now.plainDate("japanese").month,
+}: MonthlyCalendarViewProps) => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [yearMonth] = useYearMonth(initialYear, initialMonth);
-  const calendar = useDaysOfMonth(yearMonth);
+  const calendar = useDaysOfMonth(year, month);
 
   return (
     <table className={styles.table}>

@@ -3,15 +3,10 @@ import { Temporal } from "@js-temporal/polyfill";
 import { LOCALE } from "constants/config";
 import { range } from "utils/range";
 
-export interface useDaysOfMonthProps {
-  year: number;
-  month: number;
-}
-
 /**
  * useDaysOfMonth は今月のカレンダーの日付を返す
  */
-export const useDaysOfMonth = ({ year, month }: useDaysOfMonthProps) => {
+export const useDaysOfMonth = (year: number, month: number) => {
   const firstDayOfMonth = Temporal.PlainDate.from({
     year,
     month,
