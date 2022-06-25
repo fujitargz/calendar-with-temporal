@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { HeaderCell } from "./index";
+import { HeaderCell } from "./HeaderCell";
 
 export default {
   component: HeaderCell,

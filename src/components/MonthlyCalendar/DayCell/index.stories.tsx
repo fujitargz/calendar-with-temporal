@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { DayCell } from "./index";
+import { DayCell } from "./DayCell";
 
 export default {
   component: DayCell,
