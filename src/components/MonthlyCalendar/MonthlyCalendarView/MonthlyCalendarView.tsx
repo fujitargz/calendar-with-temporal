@@ -40,7 +40,7 @@ export const MonthlyCalendarView = ({
         {calendar.map((week, index) => (
           <tr key={"w" + index.toString()}>
             {week.map((day) => (
-              <DayCell key={"d" + day.toString()}>{day}</DayCell>
+              <DayCell key={"d" + day.toString()} date={day.date} />
             ))}
           </tr>
         ))}
