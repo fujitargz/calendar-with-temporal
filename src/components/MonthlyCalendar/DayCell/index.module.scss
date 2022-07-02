@@ -5,3 +5,15 @@
   vertical-align: top;
   border: variables.$border-width solid variables.$border-color;
 }
+
+.day-cell-text {
+  color: black;
+}
+
+.day-cell-text-gray {
+  color: lightgray;
+}
+
+.day-cell-text-today {
+  background-color: skyblue;
+}
