@@ -6,7 +6,7 @@ import { range } from "utils/range";
 /**
  * useDaysOfMonth は1か月のカレンダーを返す
  */
-export const useDaysOfMonth = (year: number, month: number) => {
+export const useDaysOfMonthlyCalendar = (year: number, month: number) => {
   const firstDayOfMonth = Temporal.PlainDate.from({
     year,
     month,
@@ -29,15 +29,17 @@ export const useDaysOfMonth = (year: number, month: number) => {
     firstDayOfCalendar.until(lastDayOfCalendar).total("day") + 1;
   const weeksInCalendar = daysInCalendar / daysInWeek;
 
-  const daysOfMonth = range(0, weeksInCalendar).map((week) =>
+  const daysOfMonthlyCalendar = range(0, weeksInCalendar).map((week) =>
     range(0, daysInWeek).map((day) => {
       const eachDay = firstDayOfCalendar.add({ days: daysInWeek * week + day });
       return {
+        year: eachDay.year,
+        month: eachDay.month,
         date: eachDay.day,
         currentMonth: eachDay.month === month,
       };
     })
   );
 
-  return daysOfMonth;
+  return daysOfMonthlyCalendar;
 };

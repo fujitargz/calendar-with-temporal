@@ -1,1 +1,1 @@
-export { MonthlyCalendarView } from "./MonthlyCalendarView";
+export * from "./MonthlyCalendarView";

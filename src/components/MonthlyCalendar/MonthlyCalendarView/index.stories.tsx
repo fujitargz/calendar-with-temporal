@@ -2,6 +2,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { MonthlyCalendarView } from "./MonthlyCalendarView";
 
+import { Event } from "types";
+
 export default {
   component: MonthlyCalendarView,
   argTypes: {
@@ -25,8 +27,8 @@ const Template: ComponentStory<typeof MonthlyCalendarView> = ({
   month,
 }) => {
   return (
-    <div style={{ width: "300px" }}>
-      <MonthlyCalendarView year={year} month={month} />
+    <div style={{ width: "800px" }}>
+      <MonthlyCalendarView year={year} month={month} events={events} />
     </div>
   );
 };
@@ -36,3 +38,34 @@ monthlyCalendarView.args = {
   year: 2022,
   month: 6,
 };
+
+const events: Event[] = [
+  {
+    id: 1,
+    start: {
+      year: 2022,
+      month: 6,
+      day: 1,
+    },
+    end: {
+      year: 2022,
+      month: 6,
+      day: 1,
+    },
+    title: "test event 1",
+  },
+  {
+    id: 2,
+    start: {
+      year: 2022,
+      month: 6,
+      day: 3,
+    },
+    end: {
+      year: 2022,
+      month: 6,
+      day: 5,
+    },
+    title: "test event 2",
+  },
+];

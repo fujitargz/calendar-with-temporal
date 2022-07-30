@@ -1,4 +1,8 @@
+import { Event } from "../Event";
+
 import styles from "./index.module.scss";
+
+import { Event as EventType } from "types";
 
 export interface DayCellProps {
   /**
@@ -13,6 +17,10 @@ export interface DayCellProps {
    * 今月かどうか
    */
   currentMonth?: boolean;
+  /**
+   * 表示するイベント
+   */
+  events?: EventType[];
 }
 
 /**
@@ -22,6 +30,7 @@ export const DayCell = ({
   date,
   today = false,
   currentMonth = true,
+  events = [],
 }: DayCellProps) => {
   const textStyle = ((currentMonth, today) => {
     if (!currentMonth) {
@@ -36,6 +45,9 @@ export const DayCell = ({
   return (
     <td className={styles["day-cell"]}>
       <span className={textStyle}>{date}</span>
+      {events.map((event) => (
+        <Event key={event.id} title={event.title} />
+      ))}
     </td>
   );
 };

@@ -7,13 +7,13 @@
 }
 
 .day-cell-text {
-  color: black;
+  color: variables.$black-color;
 }
 
 .day-cell-text-gray {
-  color: lightgray;
+  color: variables.$gray-color;
 }
 
 .day-cell-text-today {
-  background-color: skyblue;
+  background-color: variables.$primary-color;
 }

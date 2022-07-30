@@ -1,0 +1,5 @@
+@use "variables";
+
+.event {
+  background-color: variables.$secondary-color;
+}
