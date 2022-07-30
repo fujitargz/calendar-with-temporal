@@ -1,1 +1,1 @@
-export { DayCell } from "./DayCell";
+export * from "./DayCell";
