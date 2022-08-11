@@ -1,6 +1,9 @@
 @use "variables";
 
 .day-cell {
+  // カレンダーは5x7なので1/5=20%
+  // FIXME: 上位コンポーネントについての知識を持ってしまっている
+  height: 20%;
   text-align: center;
   vertical-align: top;
   border: variables.$border-width solid variables.$border-color;
